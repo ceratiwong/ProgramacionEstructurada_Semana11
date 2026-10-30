@@ -31,3 +31,26 @@ def inorden(raiz):
 
 print(buscar(raiz, 60))
 inorden(raiz)
+
+def preorden(raiz):
+    if raiz is not None:
+        print(raiz["valor"], end=" ")
+        preorden(raiz["izq"])
+        preorden(raiz["der"])
+
+def postorden(raiz):
+    if raiz is not None:
+        postorden(raiz["izq"])
+        postorden(raiz["der"])
+        print(raiz["valor"], end=" ")
+
+def contar_nodos(raiz):
+    if raiz is None:
+        return 0
+    return 1 + contar_nodos(raiz["izq"]) + contar_nodos(raiz["der"])
+
+def altura(raiz):
+    if raiz is None:
+        return 0
+    # La altura se calcula como 1 + el máximo entre la altura subárbol izquierdo y derecho
+    return 1 + max(altura(raiz["izq"]), altura(raiz["der"]))
